@@ -968,7 +968,7 @@ define({ "api": [
   {
     "type": "put",
     "url": "/user/:uid/:target",
-    "title": "修改user信息",
+    "title": "更新user链接信息",
     "name": "updateContent",
     "group": "User",
     "parameter": {
