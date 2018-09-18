@@ -91,6 +91,13 @@
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>article作者的UID</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Date",
             "optional": false,
             "field": "lastModified",
@@ -101,28 +108,7 @@
             "type": "String",
             "optional": false,
             "field": "tags",
-            "description": "<p>article上次修改时间</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "offset",
-            "description": "<p>(分页) 请求的起始位置。</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "limit",
-            "description": "<p>(分页) 请求单次个数。</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "sortBy",
-            "description": "<p>(分页) 请求的排序方式。</p>"
+            "description": "<p>article标签</p>"
           }
         ]
       }
@@ -441,7 +427,7 @@
   },
   {
     "type": "put",
-    "url": "/comments/reply/:cid",
+    "url": "/comments/:cid",
     "title": "修改评论",
     "name": "putReply",
     "group": "Comment",
@@ -454,6 +440,13 @@
             "optional": false,
             "field": "cid",
             "description": "<p>目标评论的ObjectId</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>目标评论的UID</p>"
           },
           {
             "group": "Parameter",
@@ -485,6 +478,67 @@
             "optional": false,
             "field": "3002",
             "description": "<p>修改评论成功</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/comments.js",
+    "groupTitle": "Comment"
+  },
+  {
+    "type": "post",
+    "url": "/comments/reply/:cid",
+    "title": "修改评论",
+    "name": "putReply",
+    "group": "Comment",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "cid",
+            "description": "<p>目标评论的ObjectId</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>目标评论的UID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>回复内容</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error": [
+          {
+            "group": "Error",
+            "optional": false,
+            "field": "5001",
+            "description": "<p>内容长度应小于225并大于1(quicklad content should less than 225 chars &amp; more than 1)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success": [
+          {
+            "group": "Success",
+            "optional": false,
+            "field": "3010",
+            "description": "<p>发布评论回复成功</p>"
           }
         ]
       }
@@ -548,7 +602,7 @@
             "group": "Parameter",
             "type": "ObjectId",
             "optional": false,
-            "field": "id",
+            "field": "uid",
             "description": "<p>Quicklad创造者的ID</p>"
           },
           {
