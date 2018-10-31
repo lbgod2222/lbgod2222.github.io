@@ -68,7 +68,7 @@ define({ "api": [
   },
   {
     "type": "put",
-    "url": "/article/:aid",
+    "url": "/article/adjust/:aid",
     "title": "修改article内容",
     "name": "changeArticle",
     "group": "Article",
@@ -150,7 +150,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/articles/:uid",
-    "title": "获取所有articles",
+    "title": "获取某个用户下的所有articles",
     "name": "userArticleList",
     "group": "Article",
     "parameter": {
@@ -301,6 +301,67 @@ define({ "api": [
     "groupTitle": "Article"
   },
   {
+    "type": "put",
+    "url": "/comments/:cid",
+    "title": "修改评论",
+    "name": "changeComment",
+    "group": "Comment",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "cid",
+            "description": "<p>目标评论的ObjectId</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>目标评论的UID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>回复内容</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error": [
+          {
+            "group": "Error",
+            "optional": false,
+            "field": "5001",
+            "description": "<p>内容长度应小于225并大于1(quicklad content should less than 225 chars &amp; more than 1)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success": [
+          {
+            "group": "Success",
+            "optional": false,
+            "field": "3002",
+            "description": "<p>修改评论成功</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/comments.js",
+    "groupTitle": "Comment"
+  },
+  {
     "type": "get",
     "url": "/comments/:aid",
     "title": "请求所有评论",
@@ -426,71 +487,10 @@ define({ "api": [
     "groupTitle": "Comment"
   },
   {
-    "type": "put",
-    "url": "/comments/:cid",
-    "title": "修改评论",
-    "name": "putReply",
-    "group": "Comment",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "cid",
-            "description": "<p>目标评论的ObjectId</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "uid",
-            "description": "<p>目标评论的UID</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "content",
-            "description": "<p>回复内容</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error": [
-          {
-            "group": "Error",
-            "optional": false,
-            "field": "5001",
-            "description": "<p>内容长度应小于225并大于1(quicklad content should less than 225 chars &amp; more than 1)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success": [
-          {
-            "group": "Success",
-            "optional": false,
-            "field": "3002",
-            "description": "<p>修改评论成功</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/comments.js",
-    "groupTitle": "Comment"
-  },
-  {
     "type": "post",
     "url": "/comments/reply/:cid",
-    "title": "修改评论",
-    "name": "putReply",
+    "title": "回复评论",
+    "name": "writeReply",
     "group": "Comment",
     "parameter": {
       "fields": {
