@@ -426,7 +426,7 @@
             "type": "ObjectId",
             "optional": false,
             "field": "content",
-            "description": "<p>目标文章的ObjectId</p>"
+            "description": "<p>content 内容</p>"
           },
           {
             "group": "Parameter",
@@ -588,6 +588,95 @@
     "group": "F__workflow_IMPACT_annihilate_app_routes_quicklads_js",
     "groupTitle": "F__workflow_IMPACT_annihilate_app_routes_quicklads_js",
     "name": ""
+  },
+  {
+    "type": "get",
+    "url": "/checkValid",
+    "title": "向目标邮箱发送邮件",
+    "name": "checkValid",
+    "group": "Mail",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authCode",
+            "description": "<p>验证码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>邮箱地址</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success": [
+          {
+            "group": "Success",
+            "optional": false,
+            "field": "3012",
+            "description": "<p>验证通过</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error": [
+          {
+            "group": "Error",
+            "optional": false,
+            "field": "5013",
+            "description": "<p>验证未通过</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/mails.js",
+    "groupTitle": "Mail"
+  },
+  {
+    "type": "get",
+    "url": "/mailValid/:address",
+    "title": "向目标邮箱发送邮件",
+    "name": "mailValid",
+    "group": "Mail",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>邮箱地址</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success": [
+          {
+            "group": "Success",
+            "optional": false,
+            "field": "3011",
+            "description": "<p>发送成功</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/mails.js",
+    "groupTitle": "Mail"
   },
   {
     "type": "put",
