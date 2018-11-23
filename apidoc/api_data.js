@@ -592,7 +592,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/checkValid",
-    "title": "向目标邮箱发送邮件",
+    "title": "校验验证码并且清楚缓存邮箱对",
     "name": "checkValid",
     "group": "Mail",
     "parameter": {
