@@ -91,13 +91,6 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "uid",
-            "description": "<p>article作者的UID</p>"
-          },
-          {
-            "group": "Parameter",
             "type": "Date",
             "optional": false,
             "field": "lastModified",
@@ -192,6 +185,41 @@
     "groupTitle": "Article"
   },
   {
+    "type": "put",
+    "url": "/article/vote/:aid",
+    "title": "给article投票",
+    "name": "voteArticle",
+    "group": "Article",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "aid",
+            "description": "<p>article的ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success": [
+          {
+            "group": "Success",
+            "optional": false,
+            "field": "3006",
+            "description": "<p>article修改成功 实质与修改article相同</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/articles.js",
+    "groupTitle": "Article"
+  },
+  {
     "type": "post",
     "url": "/article",
     "title": "发布article",
@@ -233,7 +261,7 @@
             "type": "String",
             "optional": false,
             "field": "tags",
-            "description": "<p>article上次修改时间</p>"
+            "description": "<p>article的tag内容</p>"
           },
           {
             "group": "Parameter",
@@ -916,6 +944,16 @@
         ]
       }
     },
+    "version": "0.0.0",
+    "filename": "app/routes/quicklads.js",
+    "groupTitle": "Quicklad"
+  },
+  {
+    "type": "get",
+    "url": "/lads/search/",
+    "title": "根据字段搜索所有内容",
+    "name": "searchLad",
+    "group": "Quicklad",
     "version": "0.0.0",
     "filename": "app/routes/quicklads.js",
     "groupTitle": "Quicklad"
