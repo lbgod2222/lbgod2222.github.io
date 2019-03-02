@@ -240,7 +240,7 @@ define({ "api": [
             "type": "ObjectId",
             "optional": false,
             "field": "author",
-            "description": "<p>(可选) article的发布者</p>"
+            "description": "<p>article的发布者</p>"
           },
           {
             "group": "Parameter",
@@ -950,10 +950,44 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/lads/search/",
+    "url": "/search",
     "title": "根据字段搜索所有内容",
     "name": "searchLad",
     "group": "Quicklad",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "meta",
+            "description": "<p>查询字段</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>(分页) 请求的起始位置。</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>(分页) 请求单次个数。</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sortBy",
+            "description": "<p>(分页) 请求的排序方式。</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
     "filename": "app/routes/quicklads.js",
     "groupTitle": "Quicklad"
@@ -1060,6 +1094,13 @@ define({ "api": [
             "optional": false,
             "field": "password",
             "description": "<p>user的登录密码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>user的验证邮箱</p>"
           }
         ]
       }
@@ -1137,7 +1178,7 @@ define({ "api": [
             "group": "Error",
             "optional": false,
             "field": "5007",
-            "description": "<p>密码错误</p>"
+            "description": "<p>密码错误或账号不存在</p>"
           }
         ]
       }
